@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 const {
     getAllPosts,
+    getPostByCreateDate,
     getPostById,
-    getPostByCreateData,
     getPostByIsActive,
     getPostByPostPhotoId,
     postCreate,
@@ -11,13 +11,13 @@ const {
     postDelete
 } = require('../controllers/post.controller.js');
 
-router.get('/getAllPosts', getAllPosts);
-router.get('/getPostById/:id', getPostById);
-router.get('/getPostByCreateData/:create_date', getPostByCreateData);
-router.get('/getPostByIsActive/:is_active', getPostByIsActive);
-router.get('/getPostByPostPhotoId/:post_photo_id', getPostByPostPhotoId);
-router.post('/postCreate', postCreate);
-router.put('/postUpdate/:id', postUpdate);
-router.delete('/postDelete/:id', postDelete);
+router.get('/get-all', getAllPosts);
+router.get('/get-by-create-date/:date', getPostByCreateDate);
+router.get('/get-by-id/:id', getPostById);
+router.get('/get-by-is-active/:isActive', getPostByIsActive);
+router.get('/get-by-post-photo-id/:id', getPostByPostPhotoId);
+router.post('/create', postCreate);
+router.put('/update/:id', postUpdate);
+router.delete('/delete/:id', postDelete);
 
 module.exports = router;

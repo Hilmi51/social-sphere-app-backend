@@ -15,8 +15,6 @@ const message = require('./message.route.js');
 const location = require('./location.route.js');
 const language = require('./language.route.js');
 const comment_like = require('./comment_like.route.js');
-const auth = require('./auth.route.js');
-const admin = require('./admin.route.js');
 
 router.use('/user', user);
 router.use('/usedTechnology', used_technology);
@@ -33,7 +31,5 @@ router.use('/message', message);
 router.use('/location', location);
 router.use('/language', language);
 router.use('/commentLike', comment_like);
-router.use('/auth', auth);
-router.use('/admin', admin);
 
 module.exports = router;

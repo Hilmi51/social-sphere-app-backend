@@ -1,23 +1,23 @@
 const express = require('express');
 const router = express.Router();
 const {
-    getAllCommentLikes,
-    getCommentLikeById,
-    getCommentLikeByLikedDate,
-    getCommentLikeByCommentId,
-    getCommentLikeByLiked,
-    commentLikeCreate,
+    commentLikeDelete,
     commentLikeUpdate,
-    commentLikeDelete
+    commentLikeCreate,
+    getCommentLikeByLiked,
+    getCommentLikeByCommentId,
+    getCommentLikeByLikedDate,
+    getCommentLikeById,
+    getAllCommentLikes
 } = require('../controllers/comment_like.controller.js');
 
-router.get('/getAllCommentLikes', getAllCommentLikes);
-router.get('/getCommentLikeById/:id', getCommentLikeById);
-router.get('/getCommentLikeByLikedDate/:liked_date', getCommentLikeByLikedDate);
-router.get('/getCommentLikeByCommentId/:comment_id', getCommentLikeByCommentId);
-router.get('/getCommentLikeByLiked/:liked', getCommentLikeByLiked);
-router.post('/commentLikeCreate', commentLikeCreate);
-router.put('/commentLikeUpdate/:id', commentLikeUpdate);
-router.delete('/commentLikeDelete/:id', commentLikeDelete);
+router.get('/get-all', getAllCommentLikes);
+router.get('/get-by-id/:id', getCommentLikeById);
+router.get('/get-by-liked/:liked', getCommentLikeByLiked);
+router.get('/get-by-comment-id/:id', getCommentLikeByCommentId);
+router.get('/get-by-liked-date/:liked_date', getCommentLikeByLikedDate);
+router.post('/create', commentLikeCreate);
+router.put('/update/:id', commentLikeUpdate);
+router.delete('/delete/:id', commentLikeDelete);
 
 module.exports = router;

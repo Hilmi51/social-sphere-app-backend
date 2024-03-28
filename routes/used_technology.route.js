@@ -1,16 +1,19 @@
 const express = require('express');
-const {
-    getAllUsedTechnologies, usedTechnologyCreate, usedTechnologyUpdate, usedTechnologyDelete,
-    getUsedTechnologyByCategoryId
-} = require("../controllers/used_technology.controller");
-const {getProjectByUsedTechnologyId} = require("../controllers/project.controller");
 const router = express.Router();
+const {
+    getUsedTechnologyById,
+    getAllUsedTechnologies,
+    getUsedTechnologyByCategoryId,
+    usedTechnologyCreate,
+    usedTechnologyDelete,
+    usedTechnologyUpdate
+} = require('../controllers/used_technology.controller.js');
 
-router.get('getAllUsedTechnology', getAllUsedTechnologies);
-router.get('getByUsedTechnologyId/:id', getProjectByUsedTechnologyId);
-router.get('getByUsedTechnologyCategoryId/:technology_category_id', getUsedTechnologyByCategoryId);
-router.post('createUsedTechnology', usedTechnologyCreate);
-router.put('updateUsedTechnology/:id', usedTechnologyUpdate);
-router.delete('deleteUsedTechnology/:id', usedTechnologyDelete);
+router.get('/get-all', getAllUsedTechnologies);
+router.get('/get-by-id/:id', getUsedTechnologyById);
+router.get('/get-by-category-id/:id', getUsedTechnologyByCategoryId);
+router.post('/create', usedTechnologyCreate);
+router.put('/update/:id', usedTechnologyUpdate);
+router.delete('/delete/:id', usedTechnologyDelete);
 
 module.exports = router;

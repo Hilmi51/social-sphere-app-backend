@@ -4,14 +4,14 @@ const {
     getAllTechnologyCategories,
     getTechnologyCategoryById,
     technologyCategoryCreate,
-    technologyCategoryUpdate,
-    technologyCategoryDelete
-} = require("../controllers/technology_category.controller");
+    technologyCategoryDelete,
+    technologyCategoryUpdate
+} = require("../controllers/technology_category.controller.js");
 
-router.get('/getAllTechnologyCategory', getAllTechnologyCategories);
-router.get('/getTechnologyCategoryById/:id', getTechnologyCategoryById);
-router.post('/createTechnologyCategory', technologyCategoryCreate);
-router.put('/updateTechnologyCategory/:id', technologyCategoryUpdate);
-router.delete('/deleteTechnologyCategory/:id', technologyCategoryDelete);
+router.get('/get-all', getAllTechnologyCategories);
+router.get('/get-by-id/:id', getTechnologyCategoryById);
+router.post('/create', technologyCategoryCreate);
+router.put('/update/:id', technologyCategoryUpdate);
+router.delete('/delete/:id', technologyCategoryDelete);
 
 module.exports = router;

@@ -6,16 +6,16 @@ const {
     getPostCommentsByCreateDate,
     getPostCommentsByPostId,
     postCommentCreate,
-    postCommentDelete,
-    postCommentUpdate
+    postCommentUpdate,
+    postCommentDelete
 } = require('../controllers/post_comment.controller');
 
-router.get('/getAllPostComments', getAllPostComments);
-router.get('/getPostCommentById/:id', getPostCommentById);
-router.get('/getPostCommentsByCreateDate/:createDate', getPostCommentsByCreateDate);
-router.get('/getPostCommentsByPostId/:postId', getPostCommentsByPostId);
-router.post('/postCommentCreate', postCommentCreate);
-router.put('/postCommentUpdate/:id', postCommentUpdate);
-router.delete('/postCommentDelete/:id', postCommentDelete);
+router.get('/get-all', getAllPostComments);
+router.get('/get-by-id/:id', getPostCommentById);
+router.get('/get-by-create-date/:date', getPostCommentsByCreateDate);
+router.get('/get-by-post-id/:id', getPostCommentsByPostId);
+router.post('/create', postCommentCreate);
+router.put('/update/:id', postCommentUpdate);
+router.delete('/delete/:id', postCommentDelete);
 
 module.exports = router;

@@ -4,6 +4,14 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Message extends Model {
         static associate(models) {
+            Message.belongsTo(models.User, {
+                foreignKey: "buyer_id",
+                as: "buyer"
+            });
+            Message.hasOne(models.MessagePhoto, {
+                foreignKey: "message_photo_id",
+                as: "message_photo"
+            });
         }
     }
 

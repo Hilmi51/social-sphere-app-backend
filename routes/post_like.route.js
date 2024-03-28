@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 const {
     getAllPostLikes,
     getPostLikeById,
@@ -6,18 +7,17 @@ const {
     getPostLikesByLikeDate,
     getPostLikesByPostId,
     postLikeCreate,
-    postLikeDelete,
-    postLikeUpdate
+    postLikeUpdate,
+    postLikeDelete
 } = require("../controllers/post_like.controller");
-const router = express.Router();
 
-router.get('/getAllPostLikes', getAllPostLikes);
-router.get('/getPostLikeById/:id', getPostLikeById);
-router.get('/getPostLikesByLiked/:liked', getPostLikesByLiked);
-router.get('/getPostLikesByLikeDate/:likeDate', getPostLikesByLikeDate);
-router.get('/getPostLikesByPostId/:postId', getPostLikesByPostId);
-router.post('/postLikeCreate', postLikeCreate);
-router.delete('/postLikeDelete/:id', postLikeDelete);
-router.put('/postLikeUpdate/:id', postLikeUpdate);
+router.get('/get-all', getAllPostLikes);
+router.get('/get-by-id/:id', getPostLikeById);
+router.get('/get-by-liked/:liked', getPostLikesByLiked);
+router.get('/get-by-like-date/:like_date', getPostLikesByLikeDate);
+router.get('/get-by-post-id/:id', getPostLikesByPostId);
+router.post('/create', postLikeCreate);
+router.put('/update/:id', postLikeUpdate);
+router.delete('/delete/:id', postLikeDelete);
 
 module.exports = router;

@@ -1,16 +1,21 @@
 const express = require('express');
-const {
-    getPostSaveById, getAllPostSaves, getPostSavedBySaved, getPostSavedByPostId, postSaveCreate, postSaveUpdate,
-    postSaveDelete
-} = require("../controllers/post_save.controller");
 const router = express.Router();
+const {
+    getAllPostSaves,
+    getPostSaveById,
+    getPostSavedByPostId,
+    getPostSavedBySaved,
+    postSaveCreate,
+    postSaveUpdate,
+    postSaveDelete
+} = require("../controllers/post_save.controller.js");
 
-router.get('/getAllPostSave', getAllPostSaves);
-router.get('/getPostSaveById/:id', getPostSaveById);
-router.get('/getPostSavedBySaved/:saved', getPostSavedBySaved);
-router.get('/getPostSavedByPostId/:post_id', getPostSavedByPostId);
-router.post('/postSaveCreate', postSaveCreate);
-router.put('/updatePostSave/:id', postSaveUpdate);
-router.delete('/deletePostSave/:id', postSaveDelete);
+router.get('/get-all', getAllPostSaves);
+router.get('/get-by-id/:id', getPostSaveById);
+router.get('/get-by-post-id/:id', getPostSavedByPostId);
+router.get('/get-by-saved/:saved', getPostSavedBySaved);
+router.post('/create', postSaveCreate);
+router.put('/update/:id', postSaveUpdate);
+router.delete('/delete/:id', postSaveDelete);
 
 module.exports = router;

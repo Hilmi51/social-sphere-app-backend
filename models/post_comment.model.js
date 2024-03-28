@@ -4,6 +4,10 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class PostComment extends Model {
         static associate(models) {
+            PostComment.belongsTo(models.Post, {
+                foreignKey: "post_id",
+                as: "post"
+            })
         }
     }
 

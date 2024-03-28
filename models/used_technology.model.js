@@ -4,6 +4,16 @@ const {Model} = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
     class UsedTechnology extends Model {
         static associate(models) {
+            UsedTechnology.belongsTo(models.TechnologyCategory, {
+                foreignKey: "technology_category_id",
+                as: "technology_category"
+            });
+            UsedTechnology.belongsToMany(models.Project, {
+                through: "project_used_technology",
+                as: "projects",
+                foreignKey: "used_technology_id",
+                otherKey: "project_id"
+            });
         }
     }
 

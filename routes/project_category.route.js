@@ -6,12 +6,12 @@ const {
     projectCategoryCreate,
     projectCategoryDelete,
     projectCategoryUpdate
-} = require('../controllers/project_category.controller');
+} = require('../controllers/project_category.controller.js');
 
-router.get('/getAllProjectCategory', getAllProjectCategories);
-router.get('/getProjectCategoryById/:id', getProjectCategoryById);
-router.post('/projectCategoryCreate', projectCategoryCreate);
-router.put('/projectCategoryUpdate/:id', projectCategoryUpdate);
-router.delete('/projectCategoryDelete/:id', projectCategoryDelete);
+router.get('/get-all', getAllProjectCategories);
+router.get('/get-by-id/:id', getProjectCategoryById);
+router.post('/create', projectCategoryCreate);
+router.put('/update/:id', projectCategoryUpdate);
+router.delete('/delete/:id', projectCategoryDelete);
 
 module.exports = router;

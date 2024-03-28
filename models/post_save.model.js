@@ -4,6 +4,11 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class PostSave extends Model {
         static associate(models) {
+            PostSave.belongsTo(models.Post, {
+                foreignKey: 'post_id',
+                as: 'post'
+            });
+
         }
     }
 

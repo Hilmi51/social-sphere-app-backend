@@ -1,21 +1,21 @@
 const express = require('express');
 const router = express.Router();
 const {
-    getAllLocations,
-    getLocationByCountry,
-    getLocationById,
-    getLocationByProvince,
-    locationCreate,
+    locationUpdate,
     locationDelete,
-    locationUpdate
+    locationCreate,
+    getLocationByProvince,
+    getLocationById,
+    getLocationByCountry,
+    getAllLocations
 } = require('../controllers/location.controller.js');
 
-router.get('/getAllLocations', getAllLocations);
-router.get('/getLocationById/:id', getLocationById);
-router.get('/getLocationByCountry/:country', getLocationByCountry);
-router.get('/getLocationByProvince/:province', getLocationByProvince);
-router.post('/locationCreate', locationCreate);
-router.put('/locationUpdate/:id', locationUpdate);
-router.delete('/locationDelete/:id', locationDelete);
+router.get('/get-all', getAllLocations);
+router.get('/get-by-id/:id', getLocationById);
+router.get('/get-by-country/:country', getLocationByCountry);
+router.get('/get-by-province/:province', getLocationByProvince);
+router.post('/create', locationCreate);
+router.put('/update/:id', locationUpdate);
+router.delete('/delete/:id', locationDelete);
 
 module.exports = router;

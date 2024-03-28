@@ -66,7 +66,6 @@ const messagePhotoDelete = async (req, res) => {
 module.exports = {
     getAllMessagePhotos: errorWrapper(getAllMessagePhotos),
     getMessagePhotoById: errorWrapper(getMessagePhotoById),
-    getMessagePhotoByPhotoUrl: errorWrapper(getMessagePhotoByPhotoUrl),
     messagePhotoCreate: errorWrapper(messagePhotoCreate),
     messagePhotoUpdate: errorWrapper(messagePhotoUpdate),
     messagePhotoDelete: errorWrapper(messagePhotoDelete)

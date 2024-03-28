@@ -7,7 +7,7 @@ const getAllLocations = async (req, res) => {
         if (!locations) {
             res.status(404).send('Location not found!')
         }
-        res.status(200).send('' + locations);
+        res.status(200).send('Listed by all location: ' + locations);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error getting location!');
@@ -20,7 +20,7 @@ const getLocationById = async (req, res) => {
         if (!location) {
             res.status(404).send('Location not found!');
         }
-        res.status(200).send('' + location);
+        res.status(200).send('Listed by location ID: ' + location);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error getting location!');
@@ -33,7 +33,7 @@ const getLocationByCountry = async (req, res) => {
         if (!location) {
             res.status(404).send('Location not found!');
         }
-        res.status(200).send('' + location);
+        res.status(200).send('Listed by location country: ' + location);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error getting location!');
@@ -46,7 +46,7 @@ const getLocationByProvince = async (req, res) => {
         if (!location) {
             res.status(404).send('Location not found!');
         }
-        res.status(200).send('' + location);
+        res.status(200).send('Listed by location province: ' + location);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error getting location!');
@@ -56,7 +56,7 @@ const getLocationByProvince = async (req, res) => {
 const locationCreate = async (req, res) => {
     try {
         const location = await db.Location.create(req.body);
-        res.status(201).send('' + location);
+        res.status(201).send('Location created: ' + location);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error creating location!');
@@ -69,7 +69,7 @@ const locationUpdate = async (req, res) => {
         if (!location) {
             res.status(404).send('Location not found!');
         }
-        res.status(200).send('' + location);
+        res.status(200).send('Location updated: ' + location);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error updating location!');
@@ -82,7 +82,7 @@ const locationDelete = async (req, res) => {
         if (!location) {
             res.status(404).send('Location not found!');
         }
-        res.status(200).send('' + location);
+        res.status(200).send('Location deleted: ' + location);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error deleting location!');

@@ -4,6 +4,42 @@ const {Model} = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         static associate(models) {
+            User.belongsTo(models.Language, {
+                foreignKey: 'language_id',
+                as: 'language'
+            });
+            User.belongsTo(models.Location, {
+                foreignKey: 'location_id',
+                as: 'location'
+            });
+            User.belongsTo(models.Project, {
+                foreignKey: 'project_id',
+                as: 'project'
+            });
+            User.belongsTo(models.Post, {
+                foreignKey: 'post_id',
+                as: 'post'
+            });
+            User.belongsTo(models.PostComment, {
+                foreignKey: 'comment_id',
+                as: 'comment'
+            });
+            User.belongsTo(models.Message, {
+                foreignKey: 'message_id',
+                as: 'message'
+            });
+            User.belongsTo(models.PostLike, {
+                foreignKey: 'post_like_id',
+                as: 'post_like'
+            });
+            User.belongsTo(models.CommentLike, {
+                foreignKey: 'comment_like_id',
+                as: 'comment_like'
+            });
+            User.belongsTo(models.PostSave, {
+                foreignKey: 'post_save_id',
+                as: 'post_save'
+            });
         }
     }
 
