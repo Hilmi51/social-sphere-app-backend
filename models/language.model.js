@@ -4,10 +4,6 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Language extends Model {
         static associate(models) {
-            Language.belongsTo(models.User, {
-                foreignKey: 'user_id',
-                as: 'user'
-            });
         }
     }
 
@@ -31,5 +27,5 @@ module.exports = (sequelize, DataTypes) => {
         tableName: "language",
         timestamps: false
     });
-
+    return Language;
 }

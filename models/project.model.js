@@ -4,14 +4,6 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Project extends Model {
         static associate(models) {
-            Project.belongsTo(models.ProjectCategory, {
-                foreignKey: 'category_id',
-                as: 'category'
-            });
-            Project.belongsTo(models.UsedTechnology, {
-                foreignKey: 'used_technology_id',
-                as: 'used_technology'
-            });
         }
     }
 
@@ -71,5 +63,6 @@ module.exports = (sequelize, DataTypes) => {
         modelName: 'project',
         tableName: 'project',
         timestamps: false
-    })
+    });
+    return Project;
 }

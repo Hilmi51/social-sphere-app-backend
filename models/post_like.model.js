@@ -4,10 +4,6 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class PostLike extends Model {
         static associate(models) {
-            PostLike.belongsTo(models.Post, {
-                foreignKey: "post_id",
-                as: "post"
-            });
         }
     }
 
@@ -41,6 +37,5 @@ module.exports = (sequelize, DataTypes) => {
         tableName: "post_like",
         timestamps: false
     });
-
     return PostLike;
 }

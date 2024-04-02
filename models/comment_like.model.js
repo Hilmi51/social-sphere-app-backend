@@ -4,10 +4,6 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class CommentLike extends Model {
         static associate(models) {
-            CommentLike.belongsTo(models.PostComment, {
-                foreignKey: "comment_id",
-                as: "comment"
-            });
         }
     }
 
@@ -40,5 +36,6 @@ module.exports = (sequelize, DataTypes) => {
         modelName: "comment_like",
         tableName: "comment_like",
         timestamps: false
-    })
+    });
+    return CommentLike;
 }

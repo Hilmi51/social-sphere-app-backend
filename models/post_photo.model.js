@@ -4,10 +4,6 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class PostPhoto extends Model {
         static accessor(models) {
-            this.belongsTo(models.Post, {
-                foreignKey: "post_id",
-                as: "post"
-            })
         }
     }
 
@@ -26,5 +22,6 @@ module.exports = (sequelize, DataTypes) => {
         modelName: "post_photo",
         tableName: "post_photo",
         timestamps: false
-    })
+    });
+    return PostPhoto;
 }

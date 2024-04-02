@@ -4,10 +4,6 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class TechnologyCategory extends Model {
         static associate(models) {
-            TechnologyCategory.hasMany(models.UsedTechnology, {
-                foreignKey: 'technology_category_id',
-                as: 'used_technologies'
-            });
         }
     }
 
@@ -27,4 +23,5 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'technology_category',
         underscored: true
     });
+    return TechnologyCategory;
 }

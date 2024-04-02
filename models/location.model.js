@@ -4,10 +4,6 @@ const {Model} = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Location extends Model {
         static associate(models) {
-            Location.hasMany(models.User, {
-                foreignKey: 'locationId',
-                as: 'user'
-            })
         }
     }
 
@@ -31,5 +27,6 @@ module.exports = (sequelize, DataTypes) => {
         modelName: 'location',
         tableName: 'location',
         timestamps: false
-    })
+    });
+    return Location;
 }
