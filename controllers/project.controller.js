@@ -1,9 +1,8 @@
 const db = require("../models/index.js");
-const errorWrapper = require("../helpers/error/errorWrapper.js");
 
 const getAllProjects = async (req, res) => {
     try {
-        const projects = await db.Project.findAll();
+        const projects = await db["Project"].findAll();
         if (!projects) {
             res.status(404).send('Projects not found!');
         }
@@ -16,7 +15,7 @@ const getAllProjects = async (req, res) => {
 
 const getProjectById = async (req, res) => {
     try {
-        const project = await db.Project.findAll({where: {id: req.params.id}});
+        const project = await db["Project"].findAll({where: {id: req.params.id}});
         if (!project) {
             res.status(404).send('Project not found!');
         }
@@ -29,7 +28,33 @@ const getProjectById = async (req, res) => {
 
 const getProjectByCode = async (req, res) => {
     try {
-        const project = await db.Project.findAll({where: {code: req.params.code}});
+        const project = await db["Project"].findAll({where: {code: req.params.code}});
+        if (!project) {
+            res.status(404).send('Project not found!');
+        }
+        res.status(200).send(project);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error getting project!');
+    }
+}
+
+const getProjectByStartedDate = async (req, res) => {
+    try {
+        const project = await db["Project"].findAll({where: {started_date: req.params.started_date}});
+        if (!project) {
+            res.status(404).send('Project not found!');
+        }
+        res.status(200).send(project);
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Error getting project!');
+    }
+}
+
+const getProjectByFinishedDate = async (req, res) => {
+    try {
+        const project = await db["Project"].findAll({where: {finished_date: req.params.finished_date}});
         if (!project) {
             res.status(404).send('Project not found!');
         }
@@ -42,7 +67,7 @@ const getProjectByCode = async (req, res) => {
 
 const getProjectByStatus = async (req, res) => {
     try {
-        const project = await db.Project.findAll({where: {status: req.params.status}});
+        const project = await db["Project"].findAll({where: {status: req.params.status}});
         if (!project) {
             res.status(404).send('Project not found!');
         }
@@ -55,7 +80,7 @@ const getProjectByStatus = async (req, res) => {
 
 const getProjectByCategoryId = async (req, res) => {
     try {
-        const project = await db.Project.findAll({where: {category_id: req.params.category_id}});
+        const project = await db["Project"].findAll({where: {category_id: req.params.category_id}});
         if (!project) {
             res.status(404).send('Project not found!');
         }
@@ -68,7 +93,7 @@ const getProjectByCategoryId = async (req, res) => {
 
 const getProjectByUsedTechnologyId = async (req, res) => {
     try {
-        const project = await db.Project.findAll({where: {used_technology_id: req.params.used_technology_id}});
+        const project = await db["Project"].findAll({where: {used_technology_id: req.params.used_technology_id}});
         if (!project) {
             res.status(404).send('Project not found!');
         }
@@ -81,8 +106,11 @@ const getProjectByUsedTechnologyId = async (req, res) => {
 
 const projectCreate = async (req, res) => {
     try {
-        const project = await db.Project.create(req.body);
-        res.status(201).send(project);
+        const project = await db["Project"].create(req.body);
+        if (!project) {
+            res.status(404).send('Project not found!');
+        }
+        res.status(201).send('Project created!');
     } catch (error) {
         console.log(error);
         res.status(500).send('Error created project!');
@@ -91,11 +119,11 @@ const projectCreate = async (req, res) => {
 
 const projectUpdate = async (req, res) => {
     try {
-        const project = await db.Project.update(req.body, {where: {id: req.params.id}});
+        const project = await db["Project"].update(req.body, {where: {id: req.params.id}});
         if (!project) {
             res.status(404).send('Project not found!');
         }
-        res.status(200).send(project);
+        res.status(200).send('Project updated!');
     } catch (error) {
         console.log(error);
         res.status(500).send('Error updating project!');
@@ -104,11 +132,11 @@ const projectUpdate = async (req, res) => {
 
 const projectDelete = async (req, res) => {
     try {
-        const project = await db.Project.destroy({where: {id: req.params.id}});
+        const project = await db["Project"].destroy({where: {id: req.params.id}});
         if (!project) {
             res.status(404).send('Project not found!');
         }
-        res.status(204).send();
+        res.status(204).send('Project deleted!');
     } catch (error) {
         console.log(error);
         res.status(500).send('Error deleting project!');
@@ -116,13 +144,15 @@ const projectDelete = async (req, res) => {
 }
 
 module.exports = {
-    getAllProjects: errorWrapper(getAllProjects),
-    getProjectById: errorWrapper(getProjectById),
-    getProjectByCode: errorWrapper(getProjectByCode),
-    getProjectByStatus: errorWrapper(getProjectByStatus),
-    getProjectByCategoryId: errorWrapper(getProjectByCategoryId),
-    getProjectByUsedTechnologyId: errorWrapper(getProjectByUsedTechnologyId),
-    projectCreate: errorWrapper(projectCreate),
-    projectUpdate: errorWrapper(projectUpdate),
-    projectDelete: errorWrapper(projectDelete)
+    getAllProjects,
+    getProjectById,
+    getProjectByCode,
+    getProjectByStartedDate,
+    getProjectByFinishedDate,
+    getProjectByStatus,
+    getProjectByCategoryId,
+    getProjectByUsedTechnologyId,
+    projectCreate,
+    projectUpdate,
+    projectDelete
 }

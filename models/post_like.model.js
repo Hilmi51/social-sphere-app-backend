@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class PostLike extends Model {
         static associate(models) {
         }
@@ -18,11 +18,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: Sequelize.NOW
         },
-        liked: {
-            type: Sequelize.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        },
         post_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -33,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {
         sequelize,
-        modelName: "post_like",
+        modelName: "PostLike",
         tableName: "post_like",
         timestamps: false
     });

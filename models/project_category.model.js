@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class ProjectCategory extends Model {
         static associate(models) {
         }
@@ -14,14 +14,14 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         name: {
-            type: Sequelize.STRING(20),
+            type: Sequelize.STRING,
             allowNull: false
         }
     }, {
         sequelize,
-        modelName: 'project_category',
+        modelName: 'ProjectCategory',
         tableName: 'project_category',
-        underscored: true
+        timestamps: false
     });
     return ProjectCategory;
 }

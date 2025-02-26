@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class Post extends Model {
         static associate(models) {
         }
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         explanation: {
-            type: Sequelize.STRING(30),
+            type: Sequelize.STRING,
             allowNull: false
         },
         create_date: {
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {
         sequelize,
-        modelName: "post",
+        modelName: "Post",
         tableName: "post",
         timestamps: false
     });

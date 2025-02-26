@@ -4,8 +4,8 @@ const {
     getAllProjectCategories,
     getProjectCategoryById,
     projectCategoryCreate,
-    projectCategoryDelete,
-    projectCategoryUpdate
+    projectCategoryUpdate,
+    projectCategoryDelete
 } = require('../controllers/project_category.controller.js');
 
 router.get('/get-all', getAllProjectCategories);

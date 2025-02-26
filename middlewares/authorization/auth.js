@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const errorWrapper = require('../../helpers/error/errorWrapper.js');
 const User = require('../../models/user.model.js');
 const CustomError = require('../../helpers/error/customError.js');
 
@@ -14,7 +13,7 @@ const isTokenIncluded = (req) => {
     return req.headers.authorization && req.headers.authorization.startsWith("Bearer:")
 }
 
-const getAccessToRoute = errorWrapper(async (req, res, next) => {
+const getAccessToRoute = async (req, res, next) => {
     if (!isTokenIncluded(req)) {
         return next(new CustomError('You are not authorized to access this page', 403));
     }
@@ -32,9 +31,9 @@ const getAccessToRoute = errorWrapper(async (req, res, next) => {
         };
         next();
     });
-});
+};
 
-const getAdminAccess = errorWrapper(async (req, res, next) => {
+const getAdminAccess = async (req, res, next) => {
     const user = await User.findByPk(req.user.id);
 
     if (user.role !== "admin") {
@@ -42,7 +41,7 @@ const getAdminAccess = errorWrapper(async (req, res, next) => {
     }
 
     return next();
-});
+};
 
 
 module.exports = {

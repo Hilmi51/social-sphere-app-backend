@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 const {Model} = require("sequelize");
 
-module.exports = (sequelize, DataTypes) => {
+
+module.exports = (sequelize) => {
     class User extends Model {
         static associate(models) {
         }
@@ -11,11 +12,13 @@ module.exports = (sequelize, DataTypes) => {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            unique: true
         },
         uuid: {
-            type: Sequelize.RANGE(Sequelize.INTEGER),
+            type: Sequelize.INTEGER,
             allowNull: false,
+            defaultValue: generateRandomValue(6),
             unique: true
         },
         nicname: {
@@ -35,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         biography: {
-            type: Sequelize.STRING(30),
+            type: Sequelize.STRING,
             allowNull: true
         },
         profile_link: {
@@ -60,13 +63,13 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: true
         },
         birth_date: {
-            type: Sequelize.DATE,
-            allowNull: false
+            type: Sequelize.DATEONLY,
+            allowNull: false,
         },
         create_date: {
             type: Sequelize.DATE,
-            allowNull: false,
-            defaultValue: Sequelize.NOW
+            defaultValue: Sequelize.NOW,
+            allowNull: false
         },
         phone_verification: {
             type: Sequelize.BOOLEAN,
@@ -124,7 +127,7 @@ module.exports = (sequelize, DataTypes) => {
             type: Sequelize.INTEGER,
             allowNull: true,
             reference: {
-                model: 'post_comment',
+                model: 'comment',
                 key: 'id'
             }
         },
@@ -162,9 +165,20 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {
         sequelize,
-        modelName: "user",
-        tableName: "user",
+        modelName: "Users",
+        tableName: "users",
         timestamps: false
     });
+
+    function generateRandomValue(length) {
+        let result = '';
+        const characters = '0123456789';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
     return User;
 }

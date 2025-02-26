@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class Location extends Model {
         static associate(models) {
         }
@@ -24,7 +24,7 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {
         sequelize,
-        modelName: 'location',
+        modelName: 'Location',
         tableName: 'location',
         timestamps: false
     });

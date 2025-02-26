@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class Language extends Model {
         static associate(models) {
         }
@@ -14,16 +14,12 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         name: {
-            type: Sequelize.STRING(20),
-            allowNull: false
-        },
-        level: {
-            type: Sequelize.INTEGER,
+            type: Sequelize.STRING,
             allowNull: false
         }
     }, {
         sequelize,
-        modelName: "language",
+        modelName: "Language",
         tableName: "language",
         timestamps: false
     });

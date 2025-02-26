@@ -1,23 +1,41 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "123456",
+    "username": "neondb_owner",
+    "password": "npg_tQKhC4SxMgm3",
     "database": "social-sphere-app",
-    "host": "localhost",
-    "dialect": "postgres"
+    "host": "ep-nameless-forest-a2a7iw1w-pooler.eu-central-1.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "test": {
-    "username": "postgres",
-    "password": "123456",
+    "username": "neondb_owner",
+    "password": "npg_tQKhC4SxMgm3",
     "database": "social-sphere-app",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "host": "ep-nameless-forest-a2a7iw1w-pooler.eu-central-1.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   },
   "production": {
-    "username": "postgres",
-    "password": "123456",
+    "username": "neondb_owner",
+    "password": "npg_tQKhC4SxMgm3",
     "database": "social-sphere-app",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
+    "host": "ep-nameless-forest-a2a7iw1w-pooler.eu-central-1.aws.neon.tech",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
   }
 }

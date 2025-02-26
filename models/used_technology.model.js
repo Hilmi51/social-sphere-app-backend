@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const {Model} = require("sequelize");
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class UsedTechnology extends Model {
         static associate(models) {
         }
@@ -14,20 +14,12 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         name: {
-            type: Sequelize.STRING(20),
+            type: Sequelize.STRING,
             allowNull: false
-        },
-        technology_category_id: {
-            type: Sequelize.INTEGER,
-            allowNull: true,
-            references: {
-                model: "technology_category",
-                key: "id"
-            }
         }
     }, {
         sequelize,
-        modelName: "used_technology",
+        modelName: "UsedTechnology",
         tableName: "used_technology",
         timestamps: false
     });

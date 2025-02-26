@@ -4,7 +4,6 @@ const {
     getAllPostSaves,
     getPostSaveById,
     getPostSavedByPostId,
-    getPostSavedBySaved,
     postSaveCreate,
     postSaveUpdate,
     postSaveDelete
@@ -12,8 +11,7 @@ const {
 
 router.get('/get-all', getAllPostSaves);
 router.get('/get-by-id/:id', getPostSaveById);
-router.get('/get-by-post-id/:id', getPostSavedByPostId);
-router.get('/get-by-saved/:saved', getPostSavedBySaved);
+router.get('/get-by-post-id/:post_id', getPostSavedByPostId);
 router.post('/create', postSaveCreate);
 router.put('/update/:id', postSaveUpdate);
 router.delete('/delete/:id', postSaveDelete);

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class Project extends Model {
         static associate(models) {
         }
@@ -11,22 +11,25 @@ module.exports = (sequelize, DataTypes) => {
         id: {
             type: Sequelize.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            unique: true
         },
         name: {
-            type: Sequelize.STRING(20),
+            type: Sequelize.STRING,
             allowNull: false
         },
         code: {
             type: Sequelize.INTEGER,
-            allowNull: false
+            allowNull: false,
+            defaultValue: generateRandomValue(4),
+            unique: true
         },
         description: {
-            type: Sequelize.STRING(30),
+            type: Sequelize.STRING,
             allowNull: true
         },
         media_link: {
-            type: Sequelize.STRING(),
+            type: Sequelize.STRING,
             allowNull: true
         },
         started_date: {
@@ -60,9 +63,20 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {
         sequelize,
-        modelName: 'project',
+        modelName: 'Project',
         tableName: 'project',
         timestamps: false
     });
+
+    function generateRandomValue(length) {
+        let result = '';
+        const characters = '0123456789';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
+
     return Project;
 }

@@ -1,13 +1,12 @@
 const db = require("../models/index.js");
-const errorWrapper = require("../helpers/error/errorWrapper");
 
 const getAllProjectCategories = async (req, res) => {
     try {
-        const projectCategories = await db.ProjectCategory.findAll();
+        const projectCategories = await db["ProjectCategory"].findAll();
         if (!projectCategories) {
             res.status(404).send('Project categories not found!');
         }
-        res.status(200).send('Listed by all project category: ' + projectCategories);
+        res.status(200).send(projectCategories);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error getting project categories!');
@@ -16,11 +15,11 @@ const getAllProjectCategories = async (req, res) => {
 
 const getProjectCategoryById = async (req, res) => {
     try {
-        const projectCategory = await db.ProjectCategory.findAll({where: {id: req.params.id}});
+        const projectCategory = await db["ProjectCategory"].findAll({where: {id: req.params.id}});
         if (!projectCategory) {
             res.status(404).send('Project category not found!');
         }
-        res.status(200).send('Listed by project category ID: ' + projectCategory);
+        res.status(200).send(projectCategory);
     } catch (err) {
         console.log(err);
         res.status(500).send('Error getting project category!');
@@ -29,8 +28,11 @@ const getProjectCategoryById = async (req, res) => {
 
 const projectCategoryCreate = async (req, res) => {
     try {
-        const projectCategory = await db.ProjectCategory.create(req.body);
-        res.status(201).send('Project category created: ' + projectCategory);
+        const projectCategory = await db["ProjectCategory"].create(req.body);
+        if (!projectCategory) {
+            res.status(404).send('Project category not created!');
+        }
+        res.status(201).send('Project category created!');
     } catch (err) {
         console.log(err);
         res.status(500).send('Error creating project category!');
@@ -39,11 +41,11 @@ const projectCategoryCreate = async (req, res) => {
 
 const projectCategoryUpdate = async (req, res) => {
     try {
-        const projectCategory = await db.ProjectCategory.update(req.body, {where: {id: req.params.id}});
-        if (!projectCategory) {
+        const projectCategory = await db["ProjectCategory"].update(req.body, {where: {id: req.params.id}});
+        if (projectCategory) {
             res.status(404).send('Project category not found!');
         }
-        res.status(200).send('Project category updated: ' + projectCategory);
+        res.status(200).send('Project category updated!');
     } catch (err) {
         console.log(err);
         res.status(500).send('Error updating project category!');
@@ -52,11 +54,11 @@ const projectCategoryUpdate = async (req, res) => {
 
 const projectCategoryDelete = async (req, res) => {
     try {
-        const projectCategory = await db.ProjectCategory.destroy({where: {id: req.params.id}});
+        const projectCategory = await db["ProjectCategory"].destroy({where: {id: req.params.id}});
         if (!projectCategory) {
             res.status(404).send('Project category not found!');
         }
-        res.status(204).send('Project category deleted: ' + projectCategory);
+        res.status(204).send('Project category deleted!');
     } catch (err) {
         console.log(err);
         res.status(500).send('Error deleting project category!');
@@ -64,9 +66,9 @@ const projectCategoryDelete = async (req, res) => {
 }
 
 module.exports = {
-    getAllProjectCategories: errorWrapper(getAllProjectCategories),
-    getProjectCategoryById: errorWrapper(getProjectCategoryById),
-    projectCategoryCreate: errorWrapper(projectCategoryCreate),
-    projectCategoryUpdate: errorWrapper(projectCategoryUpdate),
-    projectCategoryDelete: errorWrapper(projectCategoryDelete)
+    getAllProjectCategories,
+    getProjectCategoryById,
+    projectCategoryCreate,
+    projectCategoryUpdate,
+    projectCategoryDelete
 }

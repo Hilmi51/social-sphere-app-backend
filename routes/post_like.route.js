@@ -3,8 +3,7 @@ const router = express.Router();
 const {
     getAllPostLikes,
     getPostLikeById,
-    getPostLikesByLiked,
-    getPostLikesByLikeDate,
+    getPostLikeByLikeDate,
     getPostLikesByPostId,
     postLikeCreate,
     postLikeUpdate,
@@ -13,9 +12,8 @@ const {
 
 router.get('/get-all', getAllPostLikes);
 router.get('/get-by-id/:id', getPostLikeById);
-router.get('/get-by-liked/:liked', getPostLikesByLiked);
-router.get('/get-by-like-date/:like_date', getPostLikesByLikeDate);
-router.get('/get-by-post-id/:id', getPostLikesByPostId);
+router.get('/get-by-like-date/:like_date', getPostLikeByLikeDate);
+router.get('/get-by-post-id/:post_id', getPostLikesByPostId);
 router.post('/create', postLikeCreate);
 router.put('/update/:id', postLikeUpdate);
 router.delete('/delete/:id', postLikeDelete);

@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class Message extends Model {
         static associate(models) {
         }
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         message_content: {
-            type: Sequelize.STRING(30),
+            type: Sequelize.STRING,
             allowNull: false
         },
         send_date: {
@@ -41,8 +41,8 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {
         sequelize,
-        modelName: "message_photo",
-        tableName: "message_photo",
+        modelName: "Message",
+        tableName: "message",
         timestamps: false
     });
     return Message;

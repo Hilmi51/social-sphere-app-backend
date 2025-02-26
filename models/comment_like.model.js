@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class CommentLike extends Model {
         static associate(models) {
         }
@@ -13,27 +13,22 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        liked_date: {
+        like_date: {
             type: Sequelize.DATE,
             allowNull: false,
             defaultValue: Sequelize.NOW
-        },
-        liked: {
-            type: Sequelize.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
         },
         comment_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
             references: {
-                model: "post_comment",
+                model: "comment",
                 key: "id"
             }
         },
     }, {
         sequelize,
-        modelName: "comment_like",
+        modelName: "CommentLike",
         tableName: "comment_like",
         timestamps: false
     });

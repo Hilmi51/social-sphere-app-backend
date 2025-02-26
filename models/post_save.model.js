@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class PostSave extends Model {
         static associate(models) {
         }
@@ -13,11 +13,6 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-        saved: {
-            type: Sequelize.BOOLEAN,
-            allowNull: false,
-            defaultValue: false
-        },
         post_id: {
             type: Sequelize.INTEGER,
             allowNull: false,
@@ -28,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
         }
     }, {
         sequelize,
-        modelName: "post_save",
+        modelName: "PostSave",
         tableName: "post_save",
         timestamps: false
     });

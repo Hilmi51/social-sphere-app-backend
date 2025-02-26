@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const {Model} = require('sequelize');
 
-module.exports = (sequelize, DataTypes) => {
+module.exports = (sequelize) => {
     class PostComment extends Model {
         static associate(models) {
         }
@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             autoIncrement: true
         },
         explanation: {
-            type: Sequelize.STRING(30),
+            type: Sequelize.STRING,
             allowNull: false
         },
         create_date: {
@@ -33,8 +33,8 @@ module.exports = (sequelize, DataTypes) => {
 
     }, {
         sequelize,
-        modelName: "post_comment",
-        tableName: "post_comment",
+        modelName: "Comment",
+        tableName: "comment",
         timestamps: false
     });
     return PostComment;
